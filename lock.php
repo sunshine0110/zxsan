@@ -477,7 +477,7 @@ if ($_GET['don'] == true) {
             border-radius: 4px
         }
 
-        .bc-R10T,
+        .bc-,
         .mail,
         .terminal-input {
             background-color: #000e28;
@@ -518,7 +518,7 @@ if ($_GET['don'] == true) {
             margin: 5px 0
         }
 
-        .bc-R10T {
+        .bc- {
             border: none;
             padding: 7px 10px;
             width: 712px;
