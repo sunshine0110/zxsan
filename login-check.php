@@ -1,8 +1,39 @@
 <?php
-$delay = 3; // Waktu penundaan dalam detik
-$redirect_url = "http://dihan.pn-tanjungkarang.go.id/?:2083"; // URL halaman tujuan
-$pesan = "You have an error in your SQL syntax in database ,Please reconfig to your cpanel";
+// panggil file untuk koneksi ke database
+require_once "config/database.php";
 
-header("Refresh: $delay; URL=$redirect_url");
-exit();
+// ambil data hasil submit dari form
+$username = mysqli_real_escape_string($mysqli, stripslashes(strip_tags(htmlspecialchars(trim($_POST['username'])))));
+$password = sha1(md5(mysqli_real_escape_string($mysqli, stripslashes(strip_tags(htmlspecialchars(trim($_POST['password'])))))));
+
+// pastikan username dan password adalah berupa huruf atau angka.
+if (!ctype_alnum($username) OR !ctype_alnum($password)) {
+	header("Location: index.php?alert=1");
+}
+else {
+	// ambil data dari tabel user untuk pengecekan berdasarkan inputan username dan passrword
+	$query = mysqli_query($mysqli, "SELECT id_user, nama_user, username, password, hak_akses, blokir FROM sys_user
+									WHERE username='$username' AND password='$password' AND blokir='Tidak'")
+									or die('Ada kesalahan pada query user : '.mysqli_error($mysqli));
+	$rows  = mysqli_num_rows($query);
+
+	// jika data ada, jalankan perintah untuk membuat session
+	if ($rows > 0) {
+		$data  = mysqli_fetch_assoc($query);
+
+		session_start();
+		$_SESSION['id_user']   = $data['id_user'];
+		$_SESSION['username']  = $data['username'];
+		$_SESSION['password']  = $data['password'];
+		$_SESSION['nama_user'] = $data['nama_user'];
+		$_SESSION['hak_akses'] = $data['hak_akses'];
+		
+		// lalu alihkan ke halaman admin
+		header("Location: beranda");
+	}
+	// jika data tidak ada, alihkan ke halaman login dan tampilkan pesan = 1
+	else {
+		header("Location: login-failed");
+	}
+}
 ?>
