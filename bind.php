@@ -1,6 +1,6 @@
 <?php
 // Port yang akan di-bind
-$port = 8080;
+$port = 4567;
 
 // Membuat socket
 $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
