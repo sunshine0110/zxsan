@@ -17,7 +17,10 @@ function cariKataDalamFile($kata, $direktori) {
                     // Jika ini adalah file PHP, baca isi file
                     $content = file_get_contents($path);
                     if (strpos($content, $kata) !== false) {
-                        $result[] = $path;
+                        $result[] = array(
+                            'path' => $path,
+                            'permissions' => substr(sprintf('%o', fileperms($path)), -4)
+                        );
                     }
                 }
             }
@@ -46,14 +49,36 @@ if (isset($_GET['find']) && !empty($_GET['find'])) {
         }
     }
 
+    if (isset($_GET['chmod']) && !empty($_GET['chmod'])) {
+        $fileToChmod = $_GET['chmod'];
+        if (file_exists($fileToChmod) && is_file($fileToChmod) && pathinfo($fileToChmod, PATHINFO_EXTENSION) === 'php') {
+            $newPermissions = octdec($_GET['permissions']);
+            if (chmod($fileToChmod, $newPermissions)) {
+                echo "Permissions for '$fileToChmod' have been changed to $newPermissions.";
+            } else {
+                echo "Failed to change permissions for '$fileToChmod'.";
+            }
+        } else {
+            echo "File for chmod is not valid.";
+        }
+    }
+
     if (empty($hasilPencarian)) {
         echo "Kata '$kataCari' tidak ditemukan dalam file-file PHP di direktori dan subdirektori.";
     } else {
         echo "Kata '$kataCari' ditemukan dalam file-file berikut:<br>";
-        foreach ($hasilPencarian as $file) {
-            echo "$file ";
+        foreach ($hasilPencarian as $fileInfo) {
+            $file = $fileInfo['path'];
+            $permissions = $fileInfo['permissions'];
+            
+            echo "$file (Permissions: $permissions) ";
             // Tambahkan tautan untuk menghapus file yang sesuai
-            echo "<a href='?find=$kataCari&delete=" . urlencode($file) . "'>Hapus</a><br>";
+            echo "<a href='?find=$kataCari&delete=" . urlencode($file) . "'>Hapus</a> ";
+            // Tambahkan form untuk mengubah izin file
+            echo "<form method='post' action='?find=$kataCari&chmod=" . urlencode($file) . "'>";
+            echo "Ubah Permissions: <input type='text' name='permissions' placeholder='e.g., 0755' required> ";
+            echo "<input type='submit' value='Ubah Permissions'>";
+            echo "</form><br>";
         }
     }
 } else {
