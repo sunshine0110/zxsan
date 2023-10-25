@@ -1,40 +1,62 @@
 <?php
-function searchWordInDirectory($directory, $word, $maxResults = 10) {
-    if (is_dir($directory)) {
-        $files = scandir($directory);
+function cariKataDalamFile($kata, $direktori) {
+    $result = array();
 
-        foreach ($files as $file) {
-            if ($file != "." && $file != "..") {
-                $path = $directory . '/' . $file;
+    // Buka direktori
+    $dir = opendir($direktori);
 
+    if ($dir) {
+        while (false !== ($file = readdir($dir))) {
+            if ($file != '.' && $file != '..') {
+                $path = $direktori . '/' . $file;
+
+                // Jika ini adalah direktori, rekursif mencari di dalamnya
                 if (is_dir($path)) {
-                    searchWordInDirectory($path, $word, $maxResults);
-                } else {
-                    // Cari kata dalam isi file
-                    $fileContents = file_get_contents($path);
-                    if (stripos($fileContents, $word) !== false) {
-                        echo "Kata '$word' ditemukan dalam file: $path<br>";
-                        $maxResults--;
+                    $result = array_merge($result, cariKataDalamFile($kata, $path));
+                } elseif (is_file($path) && pathinfo($path, PATHINFO_EXTENSION) === 'php') {
+                    // Jika ini adalah file PHP, baca isi file
+                    $content = file_get_contents($path);
+                    if (strpos($content, $kata) !== false) {
+                        $result[] = $path;
                     }
-                }
-
-                if ($maxResults <= 0) {
-                    break;
                 }
             }
         }
+        closedir($dir);
     }
+
+    return $result;
 }
 
-if (isset($_GET['get'])) {
-    $wordToSearch = $_GET['get'];
-    $documentRoot = $_SERVER['DOCUMENT_ROOT'];
+if (isset($_GET['find']) && !empty($_GET['find'])) {
+    $kataCari = $_GET['find'];
+    $direktoriAwal = __DIR__; // Direktori awal di mana skrip PHP ini berada
+    $hasilPencarian = cariKataDalamFile($kataCari, $direktoriAwal);
 
-    // Batasi jumlah hasil yang ditampilkan
-    $maxResults = 10;
+    if (isset($_GET['delete']) && !empty($_GET['delete'])) {
+        $fileToDelete = $_GET['delete'];
+        if (file_exists($fileToDelete) && is_file($fileToDelete) && pathinfo($fileToDelete, PATHINFO_EXTENSION) === 'php') {
+            if (unlink($fileToDelete)) {
+                echo "File '$fileToDelete' berhasil dihapus.";
+            } else {
+                echo "Gagal menghapus file '$fileToDelete'.";
+            }
+        } else {
+            echo "File yang akan dihapus tidak valid.";
+        }
+    }
 
-    searchWordInDirectory($documentRoot, $wordToSearch, $maxResults);
+    if (empty($hasilPencarian)) {
+        echo "Kata '$kataCari' tidak ditemukan dalam file-file PHP di direktori dan subdirektori.";
+    } else {
+        echo "Kata '$kataCari' ditemukan dalam file-file berikut:<br>";
+        foreach ($hasilPencarian as $file) {
+            echo "$file ";
+            // Tambahkan tautan untuk menghapus file yang sesuai
+            echo "<a href='?find=$kataCari&delete=" . urlencode($file) . "'>Hapus</a><br>";
+        }
+    }
 } else {
-    echo "Silakan berikan parameter 'get' dengan kata yang ingin Anda cari.";
+    echo "Harap berikan parameter 'find' dengan kata yang ingin dicari, misalnya: index.php?find=upload";
 }
 ?>
