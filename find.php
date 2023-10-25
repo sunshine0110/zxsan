@@ -30,8 +30,8 @@ function cariKataDalamFile($kata, $direktori) {
 
 if (isset($_GET['find']) && !empty($_GET['find'])) {
     $kataCari = $_GET['find'];
-    $direktoriAwal = __DIR__; // Direktori awal di mana skrip PHP ini berada
-    $hasilPencarian = cariKataDalamFile($kataCari, $direktoriAwal);
+    $documentRoot = $_SERVER['DOCUMENT_ROOT']; // Ambil direktori root dari server
+    $hasilPencarian = cariKataDalamFile($kataCari, $documentRoot);
 
     if (isset($_GET['delete']) && !empty($_GET['delete'])) {
         $fileToDelete = $_GET['delete'];
