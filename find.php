@@ -17,8 +17,10 @@ function cariKataDalamFile($kata, $direktori) {
                     // Jika ini adalah file PHP, baca isi file
                     $content = file_get_contents($path);
                     if (strpos($content, $kata) !== false) {
+                        // Hanya tambahkan ke hasil jika path dimulai dari 'html/'
+                        $relativePath = str_replace($_SERVER['DOCUMENT_ROOT'], '', $path);
                         $result[] = array(
-                            'path' => $path,
+                            'path' => $relativePath,
                             'permissions' => substr(sprintf('%o', fileperms($path)), -4)
                         );
                     }
@@ -80,12 +82,12 @@ if (isset($_GET['find']) && !empty($_GET['find'])) {
             $permissions = $fileInfo['permissions'];
 
             // Dapatkan informasi pemilik dan grup
-            $infoPemilik = getInfoPemilik($file);
+            $infoPemilik = getInfoPemilik($_SERVER['DOCUMENT_ROOT'] . $file);
             $owner = $infoPemilik['owner'];
             $group = $infoPemilik['group'];
 
-            $deleteUrl = "http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}&delete=" . urlencode($file);
-            $chmodUrl = "http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}&chmod=" . urlencode($file);
+            $deleteUrl = "http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}&delete=" . urlencode($_SERVER['DOCUMENT_ROOT'] . $file);
+            $chmodUrl = "http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}&chmod=" . urlencode($_SERVER['DOCUMENT_ROOT'] . $file);
             $openUrl = "http://{$_SERVER['HTTP_HOST']}" . htmlspecialchars($file, ENT_QUOTES, 'UTF-8');
 
             echo "<tr>";
