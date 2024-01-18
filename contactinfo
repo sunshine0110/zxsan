@@ -13,7 +13,7 @@
 "notify_contact_address_change": 1
 "notify_contact_address_change_notification_disabled": 1
 "notify_disk_limit": 1
-"notify_password_change": 1
+"notify_password_change": 0
 "notify_password_change_notification_disabled": 1
 "notify_ssl_expiry": 0
 "origin": 'cpanel'
